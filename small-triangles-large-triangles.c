@@ -12,16 +12,15 @@ struct triangle {
 
 typedef struct triangle triangle;
 
-
 void swap(triangle *tr1, triangle *tr2);
 
 void sort_by_area(triangle *tr, int n) {
-    for (int j = 0; j < n -1; j++) {
+    for (int j = 0; j < n - 1; j++) {
         for (int i = 0; i < n - 1; i++) {
 
-            float p1 = (tr[i].a + tr[i].b + tr[i].c)/2;
+            float p1 = (tr[i].a + tr[i].b + tr[i].c) / 2.0;
             float S1 = sqrt(p1 * (p1 - tr[i].a) * (p1 - tr[i].b) * (p1 - tr[i].c));
-            float p2 = (tr[i + 1].a + tr[i + 1].b + tr[i + 1].c)/2;
+            float p2 = (tr[i + 1].a + tr[i + 1].b + tr[i + 1].c) / 2.0;
             float S2 = sqrt(p2 * (p2 - tr[i + 1].a) * (p2 - tr[i + 1].b) * (p2 - tr[i + 1].c));
 
             if (S2 < S1) {
@@ -30,7 +29,6 @@ void sort_by_area(triangle *tr, int n) {
         }
     }
 }
-
 
 void swap(triangle *tr1, triangle *tr2) {
     triangle *temp = malloc(sizeof(triangle));
@@ -48,8 +46,7 @@ void swap(triangle *tr1, triangle *tr2) {
     free(temp);
 }
 
-int main()
-{
+int main() {
     int n;
     scanf("%d", &n);
     triangle *tr = malloc(n * sizeof(triangle));
@@ -58,11 +55,7 @@ int main()
     }
     sort_by_area(tr, n);
     for (int i = 0; i < n; i++) {
-        float p1 = (tr[i].a + tr[i].b + tr[i].c)/2;
-        float S1 = sqrt(p1 * (p1 - tr[i].a) * (p1 - tr[i].b) * (p1 - tr[i].c));
-
-        printf("%f %d %d %d\n", S1,tr[i].a, tr[i].b, tr[i].c);
-
+        printf("%d %d %d\n", tr[i].a, tr[i].b, tr[i].c);
     }
     return 0;
 }
