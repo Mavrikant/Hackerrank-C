@@ -16,6 +16,8 @@ int find_nth_term(int n, int a, int b, int c) {
         return b;
     } else if (1 == n) {
         return a;
+    } else{
+        return -1;
     }
 
 }
