@@ -5,5 +5,5 @@ set(CMAKE_C_STANDARD 11)
 
 include_directories(.)
 
-add_executable(Hackerrank_C   recursion-in-c.c)
+add_executable(Hackerrank_C dynamic-array-in-c.c)
 target_link_libraries(Hackerrank_C m)

@@ -1,9 +1,25 @@
 //https://www.hackerrank.com/challenges/querying-the-document/problem
 
+/*
+Sample Input 0
+2                                                                  // Two paragraph
+Learning C is fun.
+Learning pointers is more fun.It is good to have pointers.
+3                                                                  // Query number
+1 2                                                                // Type 1
+2
+5
+6
+2 1 1                                                              // Type 2
+4
+3 1 1 1                                                            // Type 3
+
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include<assert.h>
+#include <assert.h>
 
 #define MAX_CHARACTERS 1005
 #define MAX_PARAGRAPHS 5
@@ -20,7 +36,35 @@ char ***kth_paragraph(char ****document, int k) {
 
 }
 
+int find_number_of_parag(char *text) {
+    int counter = 0;
+    int i = 0;
+    while (i < strlen(text)) {
+        if (text[i] == '\n') {
+            counter++;
+        }
+        i++;
+    }
+    return counter + 1;
+}
+
+
 char ****get_document(char *text) {
+    //char**** document = {{{"Learning", "C", "is", "fun"}}, {{"Learning", "pointers", "is", "more", "fun"}, {"It", "is", "good", "to", "have", "pointers"}}};
+    char ****document = 1;
+    int number_of_parag = find_number_of_parag(text);
+    printf("\nnumber_of_parag=%d", number_of_parag);
+    ****document = malloc(number_of_parag * sizeof(char *));
+    printf("ok");
+
+//    char *temp_text = malloc(sizeof(text));
+//    while (paragraph != NULL) {
+//        strcpy(temp_text, text);
+//        paragraph = strtok(temp_text, "\n");
+//        printf("%s", paragraph);
+//        int N =
+//    }
+
 
 }
 
@@ -72,11 +116,11 @@ int main() {
     char ****document = get_document(text);
 
     int q;
-    scanf("%d", &q);
+    scanf("%d", &q); //Query number
 
     while (q--) {
         int type;
-        scanf("%d", &type);
+        scanf("%d", &type);  //Query type
 
         if (type == 3) {
             int k, m, n;
